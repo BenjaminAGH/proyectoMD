@@ -1,0 +1,14 @@
+{
+  "name": "proyectomd",
+  "version": "1.0.0",
+  "description": "proyecto_RI",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "benjamin guajardo",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
