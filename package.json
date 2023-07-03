@@ -2,13 +2,22 @@
   "name": "proyectomd",
   "version": "1.0.0",
   "description": "proyecto_RI",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon src/server.js"
   },
+  "keywords": [
+    "node",
+    "backend",
+    "http"
+  ],
   "author": "benjamin guajardo",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.1",
+    "uuid": "^9.0.0"
   }
 }
