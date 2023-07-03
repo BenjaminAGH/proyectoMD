@@ -2,19 +2,29 @@ const mongoose = require('mongoose');
 
 // Crea el esquema usuario
 const usuarioSchema = new mongoose.Schema({
-  nombre: {
+  usuario: {
     type: String,
     required: true,
+    unique: true
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
+  },
+  contraseña: {
+    type: String,
+    required: true
   },
   cargo: {
     type: String,
     enum: ['brigadista', 'supervisor']
   },
+  admin: {
+    type: Boolean,
+    default: false,
+    required: true
+  }
 });
 
 

@@ -12,9 +12,11 @@ exports.getUsuarios = async (req, res) => {
 exports.createUsuario = async (req, res) => {
   try {
     const usuario = new Usuario({
-      nombre: req.body.nombre,
+      usuario: req.body.usuario,
       email: req.body.email,
+      contraseña: req.body.contraseña,
       cargo: req.body.cargo,
+      admin: req.body.admin,
     });
 
     const nuevoUsuario = await usuario.save();
@@ -23,3 +25,42 @@ exports.createUsuario = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+exports.updateUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findById(req.params.id);
+    console.log(usuario.admin);
+    if (req.body.usuario) {
+      usuario.usuario = req.body.usuario;
+    }
+    if (req.body.email) {
+      usuario.email = req.body.email;
+    }
+    if (req.body.contraseña) {
+      usuario.contraseña = req.body.contraseña;
+    }
+    if (req.body.cargo) {
+      usuario.cargo = req.body.cargo;
+    }
+    if (req.body.admin) {
+      usuario.admin = req.body.admin;
+    }
+    const usuarioActualizado = await usuario.save();
+    res.status(200).json(usuarioActualizado);
+    
+  }
+  catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
+
+exports.deleteUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findById(req.params.id);
+    const usuarioEliminado = await usuario.deleteOne();
+    res.status(200).json(usuarioEliminado);
+  }
+  catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}

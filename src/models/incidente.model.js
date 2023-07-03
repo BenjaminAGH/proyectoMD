@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const incidenteSchema = new mongoose.Schema({
   titulo: {
     type: String,
-    required: true,
-    unique: true,
+    required: true
   },
   tipo: {
     type: String,
@@ -19,7 +18,7 @@ const incidenteSchema = new mongoose.Schema({
   },
   descripcion: {
     type: String,
-    required: true,
+    required: true
   },
   completado: {
     type: Boolean,
@@ -34,7 +33,7 @@ const incidenteSchema = new mongoose.Schema({
   fecha: {
     type: Date,
     default: Date.now
-  }
+  },
 });
 
 
