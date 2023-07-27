@@ -14,7 +14,7 @@ const incidenteSchema = new mongoose.Schema({
   gravedad: {
     type: String,
     required: true,
-    enum: ['bajo', 'medio', 'grave']
+    enum: ['baja', 'media', 'grave']
   },
   descripcion: {
     type: String,
