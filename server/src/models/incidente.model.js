@@ -8,13 +8,11 @@ const incidenteSchema = new mongoose.Schema({
   },
   tipo: {
     type: String,
-    required: true,
-    enum: ['seguridad', 'medico', 'equipo']
+    enum: ['Seguridad', 'Medico', 'Equipo']
   },
   gravedad: {
     type: String,
-    required: true,
-    enum: ['baja', 'media', 'grave']
+    enum: ['Baja', 'Media', 'Grave']
   },
   descripcion: {
     type: String,
@@ -23,12 +21,9 @@ const incidenteSchema = new mongoose.Schema({
   completado: {
     type: Boolean,
     default: false,
-    required: true
   },
   usuario: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Usuario',
-    required: true
+    type: String,
   },
   fecha: {
     type: Date,

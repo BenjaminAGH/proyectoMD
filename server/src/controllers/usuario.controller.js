@@ -1,4 +1,14 @@
+const bcrypt = require('bcrypt');
 const Usuario = require('../models/usuario.model.js');
+
+exports.getUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findById(req.params.id);
+    res.status(200).json(usuario);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 exports.getUsuarios = async (req, res) => {
   try {
@@ -12,14 +22,14 @@ exports.getUsuarios = async (req, res) => {
 exports.createUsuario = async (req, res) => {
   try {
     const usuario = new Usuario({
-      usuario: req.body.usuario,
+      rut: req.body.rut,
       email: req.body.email,
-      contraseña: req.body.contraseña,
-      cargo: req.body.cargo,
+      contrasena: req.body.contrasena,
       admin: req.body.admin,
     });
 
     const nuevoUsuario = await usuario.save();
+    console.log(res.body);
     res.status(201).json(nuevoUsuario);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -30,17 +40,14 @@ exports.updateUsuario = async (req, res) => {
   try {
     const usuario = await Usuario.findById(req.params.id);
     console.log(usuario.admin);
-    if (req.body.usuario) {
-      usuario.usuario = req.body.usuario;
+    if (req.body.rut) {
+      usuario.rut = req.body.usuario;
     }
     if (req.body.email) {
       usuario.email = req.body.email;
     }
-    if (req.body.contraseña) {
-      usuario.contraseña = req.body.contraseña;
-    }
-    if (req.body.cargo) {
-      usuario.cargo = req.body.cargo;
+    if (req.body.contrasena) {
+      usuario.contrasena = req.body.contrasena;
     }
     if (req.body.admin) {
       usuario.admin = req.body.admin;
@@ -59,8 +66,7 @@ exports.deleteUsuario = async (req, res) => {
     const usuario = await Usuario.findById(req.params.id);
     const usuarioEliminado = await usuario.deleteOne();
     res.status(200).json(usuarioEliminado);
-  }
-  catch (error) {
+  }catch (error) {
     res.status(500).json({ message: error.message });
   }
 }

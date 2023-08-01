@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar'
+import Navbar  from '../components/Navbar'  
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="max-w mx-auto">
           <Navbar />
-  
         </div>
         <div className="max-w mx-auto px-20 mt-8">
           {children}

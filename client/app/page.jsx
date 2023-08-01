@@ -1,11 +1,11 @@
-import RegisterList from "@/components/RegisterList";
+import LoginForm from "@/components/LoginForm";
 
-export default function Home() {
+const loginUser = () => {
   return (
-    <>
-      <RegisterList/>
-      <RegisterList/>
-      <RegisterList/>
-    </>
-  )
-}
+    <div>
+      <LoginForm />
+    </div>
+  );
+};
+
+export default loginUser;

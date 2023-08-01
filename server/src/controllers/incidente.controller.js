@@ -1,5 +1,14 @@
 const Incidente = require('../models/incidente.model.js');
 
+exports.getIncidente = async (req, res) => {
+  try {
+    const incidente = await Incidente.findById(req.params.id);
+    res.status(200).json(incidente);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.getIncidentes = async (req, res) => {
   try {
     const incidentes = await Incidente.find();
@@ -22,6 +31,7 @@ exports.createIncidente = async (req, res) => {
       fecha: req.body.fecha,
     });
 
+    console.log(req.body);
     const nuevoIncidente = await incidente.save();
     res.status(201).json(nuevoIncidente);
   } catch (error) {
@@ -47,6 +57,7 @@ exports.updateIncidente = async (req, res) => {
     if (req.body.completado) {
       incidente.completado = req.body.completado;
     }
+
     const incidenteActualizado = await incidente.save();
     res.status(200).json(incidenteActualizado);
   }

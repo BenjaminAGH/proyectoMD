@@ -2,28 +2,24 @@ const mongoose = require('mongoose');
 
 // Crea el esquema usuario
 const usuarioSchema = new mongoose.Schema({
-  usuario: {
+  rut: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    match: [/^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/, "Rut inválido"]
   },
   email: {
     type: String,
+    unique: true,
     required: true,
-    unique: true
   },
-  contraseña: {
+  contrasena: {
     type: String,
     required: true
-  },
-  cargo: {
-    type: String,
-    enum: ['brigadista', 'supervisor']
   },
   admin: {
     type: Boolean,
-    default: false,
-    required: true
+    default: false
   }
 });
 

@@ -12,5 +12,3 @@ const options = {
 mongoose.connect(DB_URL, options)
     .then(() => console.log('Conectado a la base de datos'))
     .catch(err => console.log(err));
-
-export default connectMongoDB;
